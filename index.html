@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mb-3">
+            <h1>This is registration form</h1>
+        </div>
+        <form class="row g-3" action="#" method="post" id="registrationForm">
+            <div class="col-md-4">
+                <label for="nameInput" class="form-label">First name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Enter your first name" required>
+                <p id="fnameMsg"></p>
+            </div>
+
+            <div class="col-md-4">
+                <label for="phoneInput" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phoneInput" placeholder="Enter your phone number" required>
+                <p id="phoneMsg"></p>
+            </div>
+
+            <div class="col-md-4">
+                <label for="emailInput" class="form-label">Email</label>
+                <div class="input-group">
+                    <input type="email" class="form-control" id="emailInput" aria-describedby="inputGroupPrepend"
+                        placeholder="Enter your email" required>
+                </div>
+                <p id="emailMsg"></p>
+            </div>
+
+            <div class="col-md-12">
+                <label for="citySelect" class="form-label">City</label>
+                <select class="form-select" id="citySelect" required>
+                    <option selected value="0">Choose a city...</option>
+                    <option value="1">Da Nang</option>
+                    <option value="2">Ha Noi</option>
+                    <option value="3">Ho Chi Minh</option>
+                </select>
+                <p id="cityMsg"></p>
+            </div>
+
+            <div class="col-md-12">
+                <label for="contactRadioGroup" class="form-label">Contact me by</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contactRadioGroup" id="textRadio" value="Text"
+                        checked>
+                    <label class="form-check-label" for="inlineRadio1">Text</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contactRadioGroup" id="emailRadio" value="Email">
+                    <label class="form-check-label" for="inlineRadio2">Email</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contactRadioGroup" id="noContactRadio"
+                        value="Don't contact me">
+                    <label class="form-check-label" for="inlineRadio3">Don't contact me</label>
+                </div>
+                <p id="radioMsg"></p>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Default checkbox
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p id="termMsg"></p>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary" type="button" id="submitBtn" onclick="myFunction()">Submit form</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary" type="button" id="resetBtn">Reset form</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Script link -->
+    <script src="./source.js"></script>
+</body>
+
+</html>
