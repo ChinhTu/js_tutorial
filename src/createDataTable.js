@@ -55,6 +55,7 @@ const createTableBody = (dataArray) => {
   const tbody = document.createElement("tbody");
   dataArray.forEach((element, index) => {
     const tr = document.createElement("tr");
+    tr.setAttribute("id", `row${index + 1}`);
     const numTd = document.createElement("td");
     const fullNameTd = document.createElement("td");
     const ageTd = document.createElement("td");
@@ -76,8 +77,14 @@ const createTableBody = (dataArray) => {
     // Call create button function
     const editBtn = createButton("Edit");
     const deleteBtn = createButton("Delete");
+    // Listen event for delete button
+    deleteBtn.setAttribute("data-bs-toggle", "modal");
+    deleteBtn.setAttribute("data-bs-target", "#deleteModal");
+    deleteBtn.setAttribute("onclick", createDeleteModal());
     actionsTd.append(editBtn);
     actionsTd.append(deleteBtn);
+
+    console.log(deleteBtn);
 
     // Push
     tr.append(numTd);

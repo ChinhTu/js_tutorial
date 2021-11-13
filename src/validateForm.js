@@ -91,7 +91,7 @@ const addFunction = () => {
   let genderVal = "";
   genderParam.forEach((ele) => {
     if (ele.checked) {
-      gender = ele.value;
+      genderVal = ele.value;
     }
     return genderVal;
   });
@@ -102,17 +102,26 @@ const addFunction = () => {
       nameParam,
       ageParam,
       emailParam,
+      genderVal,
       heightParam,
       weightParam
     );
+
     // Push data to dataArray
     dataArray.push(newData);
+
+    const newArr = dataArray.map((obj) => {
+      obj.BMI = obj.calculateBMI().toFixed(1);
+      obj.healthStt = obj.guessHealth();
+
+      return obj;
+    });
 
     // Remove old data
     $("userTable").remove();
 
     // New table
-    const newTable = createTable(dataArray);
+    const newTable = createTable(newArr);
 
     $("data").append(newTable);
   }

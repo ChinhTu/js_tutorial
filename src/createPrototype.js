@@ -62,7 +62,7 @@ for (let count = 0; count < limit; count++) {
   const person = new Person(
     names[randomInt(0, 9)],
     ages[randomInt(0, 5)],
-    emails[randomInt(0.4)],
+    emails[randomInt(0, 4)],
     genders[randomInt(0, 2)],
     heights[randomInt(0, 5)],
     weights[randomInt(0, 5)]
