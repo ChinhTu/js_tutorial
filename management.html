@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
     <link rel="stylesheet" href="./assets/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
-        <div id="data"></div>
-        <form action="#" id="inputForm" class="mt-5 mb-3" >
+        <div id="data">
+
+        </div>
+
+        <form action="#" id="inputForm" class="mt-5 mb-3">
             <div class="mb-3">
-                <label for="fullNameInput" class="form-label" >Full name</label>
-                <input type="text" class="form-control" id="fullNameInput" placeholder="Enter your full name" onblur="nameInputValidate()">
+                <label for="fullNameInput" class="form-label">Full name</label>
+                <input type="text" class="form-control" id="fullNameInput" placeholder="Enter your full name"
+                    onblur="nameInputValidate()">
                 <p id="nameMsg"></p>
             </div>
 
@@ -25,54 +32,138 @@
 
             <div class="mb-3">
                 <label for="emailInput" class="form-label">Email</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" onblur="emailInputValidate()">
+                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
+                    onblur="emailInputValidate()">
                 <p id="emailMsg"></p>
             </div>
 
             <div class="mb-3">
                 <label for="genderCheckboxes" class="form-label">Gender</label>
-            <div id="genderCheckboxes">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
-                    <label class="form-check-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
-                    <label class="form-check-label" for="female">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="other" value="Other">
-                    <label class="form-check-label" for="other">Other</label>
-                  </div>
+                <div id="genderCheckboxes">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="Other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="heightInput" class="form-label">Height</label>
-            <input type="number" class="form-control" id="heightInput" onblur="heightValidate()" placeholder="x.xx">
-            <p id="heightMsg"></p>
-          </div>
+            <div class="mb-3">
+                <label for="heightInput" class="form-label">Height</label>
+                <input type="number" class="form-control" id="heightInput" onblur="heightValidate()" placeholder="x.xx">
+                <p id="heightMsg"></p>
+            </div>
 
-          <div class="mb-3">
-            <label for="weightInput" class="form-label">Weight</label>
-            <input type="number" class="form-control" id="weightInput" onblur="weightValidate()" placeholder="xx.x">
-            <p id="weightMsg"></p>
-          </div>
+            <div class="mb-3">
+                <label for="weightInput" class="form-label">Weight</label>
+                <input type="number" class="form-control" id="weightInput" onblur="weightValidate()" placeholder="xx.x">
+                <p id="weightMsg"></p>
+            </div>
 
-          <div class="mb-3">
-            <label for="addressTextarea" class="form-label">Address</label>
-            <textarea class="form-control" id="addressTextarea" rows="3"></textarea>
-          </div>
+            <div class="mb-3">
+                <label for="addressTextarea" class="form-label">Address</label>
+                <textarea class="form-control" id="addressTextarea" rows="3"></textarea>
+            </div>
 
-          <button id="addBtn" type="button" class="btn btn-primary" onclick="addFunction()">Add</button>
-    </form>
+            <button id="addBtn" type="button" class="btn btn-primary" onclick="addFunction()">Add</button>
+        </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="./src/deleteButton.js"></script>
+    <!-- Delete modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Ask for delete row</h5><button type="button"
+                        class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">Do you want to delete this row?</div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" id="yesBtn" data-bs-dismiss="modal">Yes</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Form edit User information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="editFullName" class="col-form-label">Full name</label>
+            <input type="text" class="form-control" id="editFullName" value="">
+          </div>
+
+          <div class="mb-3">
+            <label for="editAge" class="col-form-label">Age</label>
+            <input type="number" class="form-control" id="editAge" value="">
+          </div>
+
+          <div class="mb-3">
+            <label for="editEmail" class="col-form-label">Email</label>
+            <input type="text" class="form-control" id="editEmail" value="">
+          </div>
+
+          <div class="mb-3">
+            <label for="editGender" class="form-label">Gender</label>
+            <div id="editGender">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderEdit" id="maleEdit" value="Male">
+                    <label class="form-check-label" for="maleEdit">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderEdit" id="femaleEdit" value="Female">
+                    <label class="form-check-label" for="femaleEdit">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderEdit" id="otherEdit" value="Other">
+                    <label class="form-check-label" for="otherEdit">Other</label>
+                </div>
+            </div>
+        </div>
+
+          <div class="mb-3">
+            <label for="heightEdit" class="col-form-label">Height</label>
+            <input type="text" class="form-control" id="heightEdit" value="">
+          </div>
+
+          <div class="mb-3">
+            <label for="weightEdit" class="col-form-label">Weight</label>
+            <input type="text" class="form-control" id="weightEdit" value="">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="./src/createPrototype.js"></script>
     <script src="./src/createDataTable.js"></script>
     <script src="./src/validateForm.js"></script>
+    <script src="./src/deleteButton.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

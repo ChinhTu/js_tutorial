@@ -77,14 +77,21 @@ const createTableBody = (dataArray) => {
     // Call create button function
     const editBtn = createButton("Edit");
     const deleteBtn = createButton("Delete");
+
+    // Listen event for edit button
+    editBtn.setAttribute("data-bs-toggle", "modal");
+    editBtn.setAttribute("data-bs-target", "#editModal");
+    editBtn.setAttribute("data-bs-whatever", "@getbootstrap");
+    editBtn.setAttribute("onclick", `editRow(${index})`);
+
     // Listen event for delete button
     deleteBtn.setAttribute("data-bs-toggle", "modal");
     deleteBtn.setAttribute("data-bs-target", "#deleteModal");
-    deleteBtn.setAttribute("onclick", createDeleteModal());
+    deleteBtn.setAttribute("onclick", `deleteRow(${index})`);
     actionsTd.append(editBtn);
     actionsTd.append(deleteBtn);
 
-    console.log(deleteBtn);
+    // console.log(deleteBtn);
 
     // Push
     tr.append(numTd);
