@@ -21,7 +21,7 @@
             <div class="mb-3">
                 <label for="fullNameInput" class="form-label">Full name</label>
                 <input type="text" class="form-control" id="fullNameInput" placeholder="Enter your full name"
-                    onblur="nameInputValidate()">
+                    onblur="nameInputValidate()" required>
                 <p id="nameMsg"></p>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="mb-3">
                 <label for="emailInput" class="form-label">Email</label>
                 <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
-                    onblur="emailInputValidate()">
+                    onblur="emailInputValidate()" required>
                 <p id="emailMsg"></p>
             </div>
 
@@ -57,13 +57,13 @@
 
             <div class="mb-3">
                 <label for="heightInput" class="form-label">Height</label>
-                <input type="number" class="form-control" id="heightInput" onblur="heightValidate()" placeholder="x.xx">
+                <input type="number" class="form-control" id="heightInput" onblur="heightValidate()" placeholder="x.xx" required>
                 <p id="heightMsg"></p>
             </div>
 
             <div class="mb-3">
                 <label for="weightInput" class="form-label">Weight</label>
-                <input type="number" class="form-control" id="weightInput" onblur="weightValidate()" placeholder="xx.x">
+                <input type="number" class="form-control" id="weightInput" onblur="weightValidate()" placeholder="xx.x" required>
                 <p id="weightMsg"></p>
             </div>
 
@@ -93,8 +93,6 @@
     </div>
 
     <!-- Edit modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
-
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -106,7 +104,7 @@
         <form>
           <div class="mb-3">
             <label for="editFullName" class="col-form-label">Full name</label>
-            <input type="text" class="form-control" id="editFullName" value="">
+            <input type="text" class="form-control" id="editFullName" value="" required>
           </div>
 
           <div class="mb-3">
@@ -116,41 +114,41 @@
 
           <div class="mb-3">
             <label for="editEmail" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="editEmail" value="">
+            <input type="text" class="form-control" id="editEmail" value="" required>
           </div>
 
           <div class="mb-3">
             <label for="editGender" class="form-label">Gender</label>
             <div id="editGender">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderEdit" id="maleEdit" value="Male">
+                    <input class="form-check-input" type="radio" name="editGender" id="maleEdit" value="Male">
                     <label class="form-check-label" for="maleEdit">Male</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderEdit" id="femaleEdit" value="Female">
+                    <input class="form-check-input" type="radio" name="editGender" id="femaleEdit" value="Female">
                     <label class="form-check-label" for="femaleEdit">Female</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderEdit" id="otherEdit" value="Other">
+                    <input class="form-check-input" type="radio" name="editGender" id="otherEdit" value="Other">
                     <label class="form-check-label" for="otherEdit">Other</label>
                 </div>
             </div>
         </div>
 
           <div class="mb-3">
-            <label for="heightEdit" class="col-form-label">Height</label>
-            <input type="text" class="form-control" id="heightEdit" value="">
+            <label for="editHeight" class="col-form-label">Height</label>
+            <input type="number" class="form-control" id="editHeight" required>
           </div>
 
           <div class="mb-3">
-            <label for="weightEdit" class="col-form-label">Weight</label>
-            <input type="text" class="form-control" id="weightEdit" value="">
+            <label for="editWeight" class="col-form-label">Weight</label>
+            <input type="number" class="form-control" id="editWeight" required>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveBtn">Save</button>
       </div>
     </div>
   </div>
@@ -160,6 +158,7 @@
     <script src="./src/createDataTable.js"></script>
     <script src="./src/validateForm.js"></script>
     <script src="./src/deleteButton.js"></script>
+    <script src="./src/editButton.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
