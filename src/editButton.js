@@ -1,10 +1,7 @@
-const editRow = (index) => {
-  const editFullName = $("editFullName");
-  const editAge = $("editAge");
-  const editEmail = $("editEmail");
-  const editHeight = $("editHeight");
-  const editWeight = $("editWeight");
+// $("saveBtn").setAttribute("disabled", "");
 
+// Get value for gender
+const editRow = (index) => {
   if (dataArray[index].gender === "male") {
     $("maleEdit").checked = true;
   }
@@ -28,6 +25,7 @@ const editRow = (index) => {
   $("saveBtn").setAttribute("onclick", `confirmEdit(${index})`);
 };
 
+// Listen event for Save button
 const confirmEdit = (index) => {
   const genderEdit = getName("editGender");
   let gender = "";
@@ -38,28 +36,43 @@ const confirmEdit = (index) => {
     return gender;
   });
 
+  const editFullNameVal = $("editFullName").value;
+  const editFullNameMsg = $("editFullNameMsg");
+
+  const editAge = $("editAge");
+
+  const editEmailVal = $("editEmail").value;
+  const editEmailMsg = $("editEmailMsg");
+
+  const editHeightVal = $("editHeight").value;
+  const editHeightMsg = $("editHeightMsg");
+
+  const editWeightVal = $("editWeight").value;
+  const editWeightMsg = $("editWeightMsg");
+
   const editPerson = new Person(
-    editFullName.value,
+    editFullNameVal,
     editAge.value,
-    editEmail.value,
+    editEmailVal,
     gender,
-    editHeight.value,
-    editWeight.value
+    editHeightVal,
+    editWeightVal
   );
 
-  // const confirmName = nameInputValidate();
-  // const confirmEmail = emailInputValidate();
-  // const confirmHeight = heightValidate();
-  // const confirmWeight = weightValidate();
+  const confirmName = nameInputValidate(editFullNameVal, editFullNameMsg);
+  const confirmEmail = emailInputValidate(editEmailVal, editEmailMsg);
+  const confirmHeight = heightValidate(editHeightVal, editHeightMsg);
+  const confirmWeight = weightValidate(editWeightVal, editWeightMsg);
 
-  // if (confirmName && confirmEmail && confirmHeight && confirmWeight) {
-  dataArray.splice(index, 1, editPerson);
+  if (confirmName && confirmEmail && confirmHeight && confirmWeight) {
+    // $("saveBtn").removeAttribute("disabled", "");
+    dataArray.splice(index, 1, editPerson);
+  }
   const editedArr = dataArray.map((obj) => {
     obj.BMI = obj.calculateBMI().toFixed(1);
     obj.healthStt = obj.guessHealth();
     return obj;
   });
-
   $("userTable").remove();
 
   const editedTable = createTable(editedArr);

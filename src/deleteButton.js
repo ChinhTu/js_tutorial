@@ -104,8 +104,6 @@ const deleteRow = (index) => {
 };
 
 const confirmDel = (index) => {
-  const tr = $(`row${index + 1}`);
-
   dataArray.splice(index, 1);
   const sectionData = $("data");
   const newTable = $("userTable");

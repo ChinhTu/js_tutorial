@@ -13,15 +13,34 @@
 
 <body>
     <div class="container">
+        <div id="searchSection">
+            <form class="row g-3 mt-3" id="searchForm">
+                <div class="col-5">
+                  <label for="searchInput" class="visually-hidden">Input</label>
+                  <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Property select" id="searchOption">
+                        <option value="fullName" selected>Full name</option>
+                        <option value="email">Email</option>
+                        <option value="BMI">BMI</option>
+                      </select>
+                  </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-primary mb-3" onclick="search()">Search</button>
+                </div>
+              </form>
+        </div>
         <div id="data">
 
         </div>
 
+        <!-- Add form -->
         <form action="#" id="inputForm" class="mt-5 mb-3">
             <div class="mb-3">
                 <label for="fullNameInput" class="form-label">Full name</label>
                 <input type="text" class="form-control" id="fullNameInput" placeholder="Enter your full name"
-                    onblur="nameInputValidate()" required>
+                    onblur="nameInputValidate($('fullNameInput').value, $('nameMsg'))" required>
                 <p id="nameMsg"></p>
             </div>
 
@@ -33,7 +52,7 @@
             <div class="mb-3">
                 <label for="emailInput" class="form-label">Email</label>
                 <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
-                    onblur="emailInputValidate()" required>
+                    onblur="emailInputValidate($('emailInput').value, $('emailMsg'))" required>
                 <p id="emailMsg"></p>
             </div>
 
@@ -57,13 +76,13 @@
 
             <div class="mb-3">
                 <label for="heightInput" class="form-label">Height</label>
-                <input type="number" class="form-control" id="heightInput" onblur="heightValidate()" placeholder="x.xx" required>
+                <input type="number" class="form-control" id="heightInput" onblur="heightValidate($('heightInput').value, $('heightMsg'))" placeholder="x.xx" required>
                 <p id="heightMsg"></p>
             </div>
 
             <div class="mb-3">
                 <label for="weightInput" class="form-label">Weight</label>
-                <input type="number" class="form-control" id="weightInput" onblur="weightValidate()" placeholder="xx.x" required>
+                <input type="number" class="form-control" id="weightInput" onblur="weightValidate($('weightInput').value, $('weightMsg'))" placeholder="xx.x" required>
                 <p id="weightMsg"></p>
             </div>
 
@@ -104,17 +123,20 @@
         <form>
           <div class="mb-3">
             <label for="editFullName" class="col-form-label">Full name</label>
-            <input type="text" class="form-control" id="editFullName" value="" required>
+            <input type="text" class="form-control" id="editFullName"  required onblur="nameInputValidate($('editFullName').value, $('editFullNameMsg'))">
+            <p id="editFullNameMsg"></p>
           </div>
 
           <div class="mb-3">
             <label for="editAge" class="col-form-label">Age</label>
-            <input type="number" class="form-control" id="editAge" value="">
+            <input type="number" class="form-control" id="editAge">
+            <p id="editAgeMsg"></p>
           </div>
 
           <div class="mb-3">
             <label for="editEmail" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="editEmail" value="" required>
+            <input type="text" class="form-control" id="editEmail" required onblur="emailInputValidate($('editEmail').value, $('editEmailMsg'))">
+            <p id="editEmailMsg"></p>
           </div>
 
           <div class="mb-3">
@@ -137,12 +159,14 @@
 
           <div class="mb-3">
             <label for="editHeight" class="col-form-label">Height</label>
-            <input type="number" class="form-control" id="editHeight" required>
+            <input type="number" class="form-control" id="editHeight" required onblur="heightValidate($('editHeight').value, $('editHeightMsg'))">
+            <p id="editHeightMsg"></p>
           </div>
 
           <div class="mb-3">
             <label for="editWeight" class="col-form-label">Weight</label>
-            <input type="number" class="form-control" id="editWeight" required>
+            <input type="number" class="form-control" id="editWeight" required onblur="weightValidate($('editWeight').value, $('editWeightMsg'))">
+            <p id="editWeightMsg"></p>
           </div>
         </form>
       </div>
@@ -159,6 +183,7 @@
     <script src="./src/validateForm.js"></script>
     <script src="./src/deleteButton.js"></script>
     <script src="./src/editButton.js"></script>
+    <script src="./src/searchInput.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

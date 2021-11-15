@@ -76,5 +76,3 @@ const bonusProperty = dataArray.map((obj) => {
 
   return obj;
 });
-
-console.log(dataArray);
